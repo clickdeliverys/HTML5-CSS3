@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página de Login</title>
+  <style>
+    /* Reset simples */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    /* Fundo azul */
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #0b67c2 0%, #1b9bff 100%);
+      color: #0b2545;
+      padding: 24px;
+    }
+
+    /* Card central */
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(11, 37, 69, 0.18);
+      padding: 28px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #07325a;
+    }
+    p.lead {
+      font-size: 13px;
+      margin-bottom: 20px;
+      color: #35648a;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 13px;
+      margin-bottom: 6px;
+      display: block;
+      color: #083254;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(11,37,69,0.12);
+      font-size: 14px;
+    }
+
+    .row {
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(90deg,#0077e6,#00a3ff);
+      color: white;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      box-shadow: 0 6px 18px rgba(3,102,214,0.18);
+    }
+
+    .btn:active { transform: translateY(1px); }
+
+    .secondary {
+      background: transparent;
+      color: #0b67c2;
+      border: 1px solid rgba(11,103,194,0.12);
+      box-shadow: none;
+    }
+
+    .small { font-size: 13px; }
+
+    .footer-note {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #25608b;
+      text-align: center;
+    }
+
+    /* Link estilo */
+    a.link { color: #0766c8; text-decoration: none; font-weight: 600; }
+    a.link:hover { text-decoration: underline; }
+
+    /* Responsividade */
+    @media (max-width: 480px) {
+      .card { padding: 20px; border-radius: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>Entrar na sua conta</h1>
+    <p class="lead">Digite seus dados para logar.</p>
+
+    <!-- Formulário de demonstração: o envio está bloqueado (onsubmit retorna false) -->
+    <form onsubmit="return false;" aria-label="Formulário de login">
+
+      <div>
+        <label for="username">Usuário</label>
+        <input id="username" name="username" type="text" placeholder="Digite seu usuário" autocomplete="username" />
+      </div>
+
+      <div>
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+
+      <div class="row">
+        <button class="btn" type="button" aria-disabled="true" title="Botão de cadastrar">Entrar</button>
+        <button class="btn secondary" type="button" aria-disabled="true" title="Botão de Cadastrar">Cadastrar</button>
+      </div>
+
+      <div class="footer-note small">
+        <span>Esqueceu a senha? <a href="#" class="link" onclick="return false;">Recuperar</a></span>
+      </div>
+    </form>
+
+  </main>
+
+  <!-- Pequeno script para mostrar comportamento de demo sem enviar nada -->
+  <script>
+    // Em uma versão real você removeria o "return false" do form e faria validação/submit.
+
+    // Alerta para o Botão "Entrar"
+    document.querySelectorAll('.btn:not(.secondary)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Este botão "Entrar" é apenas para demonstração.');
+      });
+    });
+
+      // Alerta para o Botão "Cadastro"
+    document.querySelectorAll('.secondary').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Este botão "Cadastrar" é apenas demonstração.');
+      });
+    });
+
+      // Alerta para o link "Esqueceu a senha?"
+    document.addEventListener('DOMContentLoaded', () => {
+      const link = document.querySelector('.footer-note .link');
+      if (link) {
+        link.addEventListener('click', () => {
+          alert('Recuperação de senha — apenas demonstrativa.');
+        });
+      }
+    });
+</script>
+</body>
+</html>
